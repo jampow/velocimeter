@@ -1,0 +1,19 @@
+{
+  "uuid": "c3b75b6c-3554-4e19-81bc-0c28b7d47329",
+  "shortName": "velocimeter",
+  "longName": "velocimeter",
+  "companyName": "MakeAwesomeHappen",
+  "versionCode": 1,
+  "versionLabel": "1.0",
+  "sdkVersion": "3",
+  "targetPlatforms": ["aplite", "basalt"],
+  "watchapp": {
+    "watchface": false
+  },
+  "appKeys": {
+    "dummy": 0
+  },
+  "resources": {
+    "media": []
+  }
+}
