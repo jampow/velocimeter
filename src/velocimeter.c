@@ -2,17 +2,25 @@
 
 static Window *window;
 static TextLayer *text_layer;
+static int speed = 60; // m/min
+static char speed_text[] = "XX m/min";
 
 static void select_click_handler(ClickRecognizerRef recognizer, void *context) {
   text_layer_set_text(text_layer, "Select");
 }
 
 static void up_click_handler(ClickRecognizerRef recognizer, void *context) {
-  text_layer_set_text(text_layer, "Up");
+  speed++;
+  snprintf(speed_text, sizeof(speed_text), "%d m/min", speed);
+  text_layer_set_text(text_layer, speed_text);
+  // APP_LOG(APP_LOG_LEVEL_DEBUG, "UP %d", speed);
 }
 
 static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
-  text_layer_set_text(text_layer, "Down");
+  speed--;
+  snprintf(speed_text, sizeof(speed_text), "%d m/min", speed);
+  text_layer_set_text(text_layer, speed_text);
+  // APP_LOG(APP_LOG_LEVEL_DEBUG, "Down %d", speed);
 }
 
 static void click_config_provider(void *context) {
@@ -26,7 +34,7 @@ static void window_load(Window *window) {
   GRect bounds = layer_get_bounds(window_layer);
 
   text_layer = text_layer_create((GRect) { .origin = { 0, 72 }, .size = { bounds.size.w, 20 } });
-  text_layer_set_text(text_layer, "Press a button");
+  text_layer_set_text(text_layer, "60 m/min");
   text_layer_set_text_alignment(text_layer, GTextAlignmentCenter);
   layer_add_child(window_layer, text_layer_get_layer(text_layer));
 }
